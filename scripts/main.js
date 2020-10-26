@@ -14,9 +14,24 @@ const searchFile = async searchText => {
 
     if(searchText.length === 0) {
         matches = [];
+        matchList.innerHTML = '';
     }
 
-    console.log(matches);
+    outputHtml(matches);
+}
+
+// Print html
+const outputHtml = matches => {
+    if(matches.length > 0){
+        const html = matches.map(match => `
+            <div class="card card-body mb-1">
+                <h4>${match.title}</h4>
+                <h6>${match.body}</h6>
+            </div>
+        `).join('');
+
+        matchList.innerHTML = html;
+    }
 }
 
 search.addEventListener('input', () => searchFile(search.value));

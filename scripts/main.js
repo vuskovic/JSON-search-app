@@ -1,37 +1,22 @@
-const search = document.getElementById('search');
-const matchList = document.getElementById('match-list');
+$(document).ready(function(){
 
-// Search data.json & filter
-const searchFile = async searchText => {
-    const response = await fetch('data/data.json');
-    const data = await response.json();
-    
-    // Match text to result
-    let matches = data.filter(result => {
-        const regex = new RegExp(`^${searchText}`, 'gi');
-        return result.title.match(regex) || result.body.match(regex);
+    $('#search').keyup(function(){
+        $('#result').html('');
+        
+        var searchField = $('#search').val();
+        var regex = new RegExp(searchField, "i");
+
+        $.getJSON('data/data.json', function(data){
+            $.each(data, function(key, value){
+                if(value.title.search(regex) != -1 || value.body.search(regex) != -1){
+                    $('#result').append(`
+                        <div class="result card card-body mb-1">
+                            <h4>${this.title}</h4>
+                            <h6>${this.body}</h6>
+                        </div>
+                    `);
+                }
+            });
+        });
     });
-
-    if(searchText.length === 0) {
-        matches = [];
-        matchList.innerHTML = '';
-    }
-
-    outputHtml(matches);
-}
-
-// Print html
-const outputHtml = matches => {
-    if(matches.length > 0){
-        const html = matches.map(match => `
-            <div class="card card-body mb-1">
-                <h4>${match.title}</h4>
-                <h6>${match.body}</h6>
-            </div>
-        `).join('');
-
-        matchList.innerHTML = html;
-    }
-}
-
-search.addEventListener('input', () => searchFile(search.value));
+});

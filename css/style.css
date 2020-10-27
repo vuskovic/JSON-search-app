@@ -1,0 +1,10 @@
+body {
+    background-color: #2C3539;
+    color: #c2c2c2;
+}
+
+input[type="text"], input[type="text"]:focus, .result {
+    background-color: #c2c2c2;
+    border: none;
+    color: #2c3539;
+}

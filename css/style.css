@@ -1,10 +1,64 @@
-body {
-    background-color: #2C3539;
-    color: #c2c2c2;
+* {
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-input[type="text"], input[type="text"]:focus, .result {
-    background-color: #c2c2c2;
+body {
+    background-color: #30343F;
+    color: #F5853F;
+}
+
+i {
+    margin-right: 10px;
+}
+
+#loading {
+    display: none;
+    width: 50px;
+    height: 50px;
+    border: 3px solid #F5853F;
+    border-radius: 50%;
+    border-top-color: #0d0e11;
+    animation: spin 1s ease-in-out infinite;
+    -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { -webkit-transform: rotate(360deg); }
+  }
+  @-webkit-keyframes spin {
+    to { -webkit-transform: rotate(360deg); }
+  }
+
+.card {
+    display: none;
+}
+
+.card {
+    border-radius: 0;
+}
+
+.card:last-of-type {
+    border-radius: 0 0  5px 5px;
+}
+
+input[type="text"] {
     border: none;
-    color: #2c3539;
+    border-radius: 5px 5px 0 0;
+}
+
+input[type="text"], input[type="text"]::placeholder {
+    color: #FFFFFF;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+}
+
+input[type="text"]::placeholder {
+    color: #30343F;
+    opacity: 0.5;;
+}
+
+input[type="text"], input[type="text"]:focus, .card {
+    background-color: #F5853F;
+    border: none;
+    color: #30343F;
 }

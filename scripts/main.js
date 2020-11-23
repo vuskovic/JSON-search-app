@@ -54,7 +54,7 @@ function showLoading() {
 
 function animateCards(){
     var i = 1;
-    $('#loading').hide(100);
+    $('#loading').hide();
     $('.card').each(function(){
         var self = $(this);
         setTimeout(function(){
